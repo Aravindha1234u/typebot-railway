@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export -p > ./apps/builder/.env.production
-cat ./apps/viewer/.env.production
-
+NEXTAUTH_URL="https://$RAILWAY_PUBLIC_DOMAIN"
+printenv > ./apps/builder/.env.production
+cat ./apps/builder/.env.production
 ENVSH_ENV=./apps/builder/.env.production ENVSH_OUTPUT=./apps/builder/public/__env.js bash inject-runtime-env.sh
 
 echo 'Checking if required environment variables are set and valid...'
